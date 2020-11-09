@@ -36,7 +36,7 @@ dev_mode = True
 class KeystrokeMonitor:
     def __init__(self):
         super(KeystrokeMonitor, self)
-        self.thres = 0.3  # s
+        self.thres = 0.01  # s
         self.prev_time = time.time()
         self.curr_time = time.time()
 

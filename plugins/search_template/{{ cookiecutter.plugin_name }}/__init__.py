@@ -37,6 +37,21 @@ data_path = Path(v0.dataLocation()) / "{{ cookiecutter.plugin_name }}"
 # see: https://github.com/jarun/googler/blob/master/auto-completion/googler_at/googler_at
 googler_at = "{{ cookiecutter.googler_at }}"
 
+
+
+
+# Pass -g and -l arguments to googler when searching.
+# See: man geoloc
+# See also: https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes for syntax
+
+googler_geoloc = 'ch'
+googler_lang = 'fr'
+
+#googler_geoloc = ''
+#googler_lang = ''
+
+
+
 # special way to handle the url? --------------------------------------------------------------
 url_handler = "{{ cookiecutter.url_handler }}"
 
@@ -189,6 +204,12 @@ def query_googler(query_str) -> dict:
     li = ["googler", "--unfilter", "--json", query_str]
     if googler_at:
         li = li[:2] + ["-w", googler_at] + li[2:]
+
+    if googler_geoloc:
+        li = li[:2] + ["-g", googler_geoloc] + li[2:]
+
+    if googler_lang:
+        li = li[:2] + ["-l", googler_lang] + li[2:]
 
     p = subprocess.Popen(li, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 

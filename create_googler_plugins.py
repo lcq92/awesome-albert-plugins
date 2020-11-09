@@ -63,30 +63,30 @@ generate_plugins_only_for = [
 ]
 
 custom_plugins = {
-    "search_patreon": {"trigger": "patreon", "googler_at": "patreon.com"},
-    "search_amazon": {"trigger": "ama", "googler_at": "amazon.co.uk"},
+    #"search_patreon": {"trigger": "patreon", "googler_at": "patreon.com"},
+    "search_amazon": {"trigger": "ama", "googler_at": "amazon.com"},
     "search_google": {"trigger": "gg", "googler_at": ""},
-    "search_cppreference": {"trigger": "cpp", "googler_at": "en.cppreference.com"},
-    "search_kivy": {"trigger": "kv", "googler_at": "kivy.org"},
+    #"search_cppreference": {"trigger": "cpp", "googler_at": "en.cppreference.com"},
+    #"search_kivy": {"trigger": "kv", "googler_at": "kivy.org"},
     "search_wikipedia": {"googler_at": "en.wikipedia.org", "trigger": "w"},
     "search_wikiquote": {"googler_at": "en.wikiquote.org", "trigger": "quote"},
     "search_urbandictionary": {"googler_at": "urbandictionary.com", "trigger": "ud"},
-    "search_dlib": {"googler_at": "dlib.net", "trigger": "dlib"},
-    "search_opencv": {"googler_at": "docs.opencv.org", "trigger": "cv2"},
+    #"search_dlib": {"googler_at": "dlib.net", "trigger": "dlib"},
+    #"search_opencv": {"googler_at": "docs.opencv.org", "trigger": "cv2"},
     "search_pydocs": {"googler_at": "docs.python.org", "trigger": "pydocs"},
     "search_numpy": {"googler_at": "numpy.org/doc", "trigger": "np"},
     "search_scipy": {"googler_at": "docs.scipy.org", "trigger": "sp"},
     "search_scihub": {"googler_at": "sci-hub.tw", "trigger": "sci"},
-    "search_devhints": {"googler_at": "devhints.io", "trigger": "dev"},
+    #"search_devhints": {"googler_at": "devhints.io", "trigger": "dev"},
     "search_cambridge_dictionary": {
         "googler_at": "dictionary.cambridge.org",
         "trigger": "cam",
     },
-    "search_qt5_docs": {"googler_at": "doc.qt.io/qt-5", "trigger": "qt5"},
-    "search_acronyms": {"googler_at": "https://www.allacronyms.com", "trigger": "acro"},
-    "search_rust": {"googler_at": "https://doc.rust-lang.org", "trigger": "ru"},
-    "search_rustcreates": {"googler_at": "https://docs.rs", "trigger": "rc"},
-    "search_ubuntu": {"googler_at": "https://packages.ubuntu.com", "trigger": "ubu"},
+    #"search_qt5_docs": {"googler_at": "doc.qt.io/qt-5", "trigger": "qt5"},
+    #"search_acronyms": {"googler_at": "https://www.allacronyms.com", "trigger": "acro"},
+    #"search_rust": {"googler_at": "https://doc.rust-lang.org", "trigger": "ru"},
+    #"search_rustcreates": {"googler_at": "https://docs.rs", "trigger": "rc"},
+    #"search_ubuntu": {"googler_at": "https://packages.ubuntu.com", "trigger": "ubu"},
     "search_youtube": {
         "trigger": "yt",
         "googler_at": "youtube.com",
@@ -95,6 +95,8 @@ custom_plugins = {
         "url_handler_description": "Launch using mpv"
     },
 }
+
+
 
 
 # generate_plugins_only_for = []
@@ -145,8 +147,8 @@ def googler_plugins() -> dict:
     return googler_plugins
 
 
-def get_cookiecutter_directives(plugin_name, trigger, googler_at, url_handler,
-                                url_handler_description, url_handler_check_cmd):
+def get_cookiecutter_directives(plugin_name, trigger, googler_at,
+                                url_handler, url_handler_description, url_handler_check_cmd):
     github_user = "bergercookie"
 
     cookiecutter_directives = {
@@ -223,6 +225,7 @@ def main():  # noqa
 
         print(f"- Cookiecutter template directory -> {cookiecutter_tmp}")
         print(f"- Plugin output directory-> {get_output_dir(plugin_name)}")
+
 
         cookiecutter(
             template=str(cookiecutter_tmp),
